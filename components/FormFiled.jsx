@@ -1,23 +1,20 @@
-import { useState } from "react";
-import { View, Text, TextInput, TouchableOpacity, Image } from "react-native";
-
-import { icons } from "../constants";
-
-const FormField = ({
-  title,
+import { View, Text, TextInput } from 'react-native'
+import React,{useState} from 'react'
+import { TouchableOpacity } from 'react-native'
+import { Image  } from 'react-native'
+import {icons, Images} from '../constants'
+const FormFiled = ({ title,
   value,
   placeholder,
   handleChangeText,
   otherStyles,
-  ...props
-}) => {
+  ...props }) => {
   const [showPassword, setShowPassword] = useState(false);
-
   return (
-    <View className={`space-y-2 ${otherStyles}`}>
-      <Text className="text-base text-gray-100 font-pmedium">{title}</Text>
 
-      <View className="w-full h-16 px-4 bg-black-100 rounded-2xl border-2 border-black-200 focus:border-secondary flex flex-row items-center">
+    <View class name={`space-y-2  ${otherStyles}`}>
+      <Text className="text-base  text-gray-100 font-bold">{title}</Text>
+      <View className="w-full h-16 px-4  border-2 border-gray-900 drop-shadow-lg bg-gray-800 rounded-2xl focus:border-yellow-400 items-center flex flex-row">
         <TextInput
           className="flex-1 text-white font-psemibold text-base"
           value={value}
@@ -27,8 +24,7 @@ const FormField = ({
           secureTextEntry={title === "Password" && !showPassword}
           {...props}
         />
-
-        {title === "Password" && (
+         {title === "Password" && (
           <TouchableOpacity onPress={() => setShowPassword(!showPassword)}>
             <Image
               source={!showPassword ? icons.eye : icons.eyeHide}
@@ -37,9 +33,10 @@ const FormField = ({
             />
           </TouchableOpacity>
         )}
+
       </View>
     </View>
-  );
-};
+  )
+}
 
-export default FormField;
+export default FormFiled
